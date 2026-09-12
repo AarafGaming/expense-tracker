@@ -26,7 +26,7 @@ while true:
         expensescosts.add(abs(parseInt(readLine(stdin))))
         stdout.write("Enter item description: ")
         expensesdescriptions.add(readLine(stdin))
-        expensestimes.add(now().format("hh:mm tt"))
+        expensestimes.add(now().format("yyyy-MM-dd HH:mm:ss"))
         echo "Added successfully"
     
     elif chosen_option == "2":
@@ -49,7 +49,7 @@ while true:
         expensesitems.add(readLine(stdin))
         stdout.write("Enter item sell price: ")
         expensescosts.add((abs(parseInt(readLine(stdin))) * -1))
-        expensestimes.add(now().format("hh:mm tt"))
+        expensestimes.add(now().format("yyyy-MM-dd HH:mm:ss"))
         echo "Added successfully"
 
     elif chosen_option == "4":
