@@ -1,6 +1,9 @@
 import std/strutils
+import times
 var expensesitems: seq[string] = @[]
 var expensescosts: seq[int] = @[]
+var expensesdescriptions: seq[string] = @[]
+var expensestimes: seq[string] = @[]
 var total = 0
 var itemCost = 0
 
@@ -21,6 +24,9 @@ while true:
         expensesitems.add(readLine(stdin))
         stdout.write("Enter item cost: ")
         expensescosts.add(abs(parseInt(readLine(stdin))))
+        stdout.write("Enter item description: ")
+        expensesdescriptions.add(readLine(stdin))
+        expensestimes.add(now().format("hh:mm tt"))
         echo "Added successfully"
     
     elif chosen_option == "2":
@@ -29,9 +35,9 @@ while true:
         for i in 0 ..< expensesitems.len:
             itemCost = expensescosts[i]
             if itemCost < 0:
-                echo expensesitems[i], " sold for ", abs(itemCost), " ", currency
+                echo "[", expensestimes[i], "] ", expensesitems[i], " sold for ", abs(itemCost), " ", currency
             else:
-                echo expensesitems[i], " costs ", itemCost, " ", currency
+                echo "[", expensestimes[i], "] ", expensesitems[i], " costs ", itemCost, " ", currency, ". Description: ", expensesdescriptions[i]
             total += itemCost
 
         echo "Total: ", total, " ", currency
@@ -43,6 +49,7 @@ while true:
         expensesitems.add(readLine(stdin))
         stdout.write("Enter item sell price: ")
         expensescosts.add((abs(parseInt(readLine(stdin))) * -1))
+        expensestimes.add(now().format("hh:mm tt"))
         echo "Added successfully"
 
     elif chosen_option == "4":
